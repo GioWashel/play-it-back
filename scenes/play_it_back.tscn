@@ -1,5 +1,6 @@
 [gd_scene load_steps=10 format=4 uid="uid://b37plmw73hqye"]
 
+[ext_resource type="Script" uid="uid://b0dghxkhmymm2" path="res://scripts/CameraFollow.gd" id="1_2pvbs"]
 [ext_resource type="Script" uid="uid://dymaohpe45iuf" path="res://scripts/player_controller.gd" id="1_2u5xn"]
 [ext_resource type="Texture2D" uid="uid://ciy3u6ckwhakv" path="res://Assets/Charichters3.png" id="1_7c1yi"]
 [ext_resource type="Script" uid="uid://dnrttaaofdxgv" path="res://scripts/player_manager.gd" id="2_2pvbs"]
@@ -48,6 +49,17 @@ height = 32.0
 
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(4, 4)
+script = ExtResource("1_2pvbs")
+
+[node name="GuitarHero" type="CharacterBody2D" parent="." groups=["Players"]]
+position = Vector2(40, 0)
+script = ExtResource("1_2u5xn")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="GuitarHero"]
+shape = SubResource("CapsuleShape2D_2u5xn")
+
+[node name="Sprite2D" type="Sprite2D" parent="GuitarHero"]
+texture = ExtResource("1_7c1yi")
 
 [node name="TilemapBase" type="TileMapLayer" parent="."]
 use_parent_material = true
