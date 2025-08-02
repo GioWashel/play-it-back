@@ -15,6 +15,10 @@ run/main_scene="res://scenes/play_it_back.tscn"
 config/features=PackedStringArray("4.4", "GL Compatibility")
 config/icon="res://icon.svg"
 
+[global_group]
+
+Players=""
+
 [rendering]
 
 textures/canvas_textures/default_texture_filter=0
