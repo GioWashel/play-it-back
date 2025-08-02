@@ -114,38 +114,38 @@ use_parent_material = true
 tile_map_data = PackedByteArray("AAD+/wIAAQABAAAAAAD//wIAAQABAAAAAAAAAAIAAQABAAAAAAABAAIAAQABAAAAAAACAAIAAQABAAAAAAADAAEAAQADAAAAAAADAAIAAQADAAEAAAAEAAEAAQAEAAAAAAAFAAAAAQADAAAAAAAFAAEAAQADAAEAAAAGAAAAAQAEAAAAAAAHAAAAAQABAAAAAAAIAAAAAQABAAAAAAAJAAAAAQABAAAAAAAKAAAAAQABAAAAAAALAAAAAQAJAAAAABD9/wIAAQABAAAAAAD8/wIAAQABAAAAAAD7/wIAAQABAAAAAAD6/wIAAQAJAAAAAAD5/wEAAQAAAAEAABD5/wAAAQAAAAEAABD5////AQAAAAEAABD5//7/AQAAAAEAABD5//3/AQAAAAEAABD5//z/AQAAAAEAABD6//v/AQABAAIAAAD7//v/AQABAAIAAAD8//v/AQABAAIAAAD9//v/AQABAAIAAAD+//v/AQABAAIAAAD///v/AQABAAIAAAAAAPv/AQABAAIAAAABAPv/AQABAAIAAAACAPv/AQABAAIAAAADAPv/AQABAAIAAAAEAPv/AQABAAIAAAAFAPv/AQABAAIAAAAGAPv/AQABAAIAAAAHAPv/AQABAAIAAAAIAPv/AQABAAIAAAAJAPv/AQABAAIAAAAKAPv/AQABAAIAAAALAPv/AQABAAIAAAD8//7/AQAGAAAAAAD9//7/AQAHAAAAAAD+//7/AQAHAAAAAAD///7/AQAGAAAAABAMAPz/AQAAAAEAAAAMAP3/AQAAAAEAAAAMAP7/AQAAAAEAAAAMAP//AQAAAAEAAAD5//v/AQABAAEAAAD4//v/AQABAAEAAAD3//v/AQABAAEAAAD3/wIAAQABAAEAAAD3/wEAAQABAAEAAAD3/wAAAQABAAEAAAD3////AQABAAEAAAD3//7/AQABAAEAAAD3//3/AQABAAEAAAD3//z/AQABAAEAAAD4//z/AQABAAEAAAD4//3/AQABAAEAAAD4//7/AQABAAEAAAD4////AQABAAEAAAD4/wAAAQABAAEAAAD4/wEAAQABAAEAAAD4/wIAAQABAAEAAAD5/wIAAQABAAEAAAAMAAIAAQABAAEAAAAMAAEAAQABAAEAAAAMAAAAAQABAAEAAAALAAEAAQABAAEAAAAKAAEAAQABAAEAAAAJAAEAAQABAAEAAAAIAAEAAQABAAEAAAAHAAEAAQABAAEAAAAGAAEAAQABAAEAAAAGAAIAAQABAAEAAAAFAAIAAQABAAEAAAAEAAIAAQABAAEAAAAHAAIAAQABAAEAAAAIAAIAAQABAAEAAAAJAAIAAQABAAEAAAAKAAIAAQABAAEAAAALAAIAAQABAAEAAAAMAPv/AQABAAEAAAD3/wMAAQABAAEAAAD3/wQAAQABAAEAAAD4/wMAAQABAAEAAAD4/wQAAQABAAEAAAD5/wMAAQABAAEAAAD5/wQAAQABAAEAAAD6/wMAAQABAAEAAAD6/wQAAQABAAEAAAD7/wMAAQABAAEAAAD7/wQAAQABAAEAAAD8/wMAAQABAAEAAAD8/wQAAQABAAEAAAD9/wMAAQABAAEAAAD9/wQAAQABAAEAAAD+/wMAAQABAAEAAAD+/wQAAQABAAEAAAD//wMAAQABAAEAAAD//wQAAQABAAEAAAAAAAMAAQABAAEAAAAAAAQAAQABAAEAAAABAAMAAQABAAEAAAABAAQAAQABAAEAAAACAAMAAQABAAEAAAACAAQAAQABAAEAAAADAAMAAQABAAEAAAADAAQAAQABAAEAAAAEAAMAAQABAAEAAAAEAAQAAQABAAEAAAAFAAMAAQABAAEAAAAFAAQAAQABAAEAAAAGAAMAAQABAAEAAAAGAAQAAQABAAEAAAAHAAMAAQABAAEAAAAHAAQAAQABAAEAAAAIAAMAAQABAAEAAAAIAAQAAQABAAEAAAAJAAMAAQABAAEAAAAJAAQAAQABAAEAAAAKAAMAAQABAAEAAAAKAAQAAQABAAEAAAALAAMAAQABAAEAAAALAAQAAQABAAEAAAAMAAMAAQABAAEAAAAMAAQAAQABAAEAAAA=")
 tile_set = SubResource("TileSet_5p0py")
 
-[node name="Node2D" type="Node2D" parent="."]
+[node name="PlayerManager" type="Node2D" parent="."]
 script = ExtResource("2_2pvbs")
 
-[node name="PianoMan" type="CharacterBody2D" parent="Node2D"]
+[node name="PianoMan" type="CharacterBody2D" parent="PlayerManager"]
 position = Vector2(-19.82, 12.21)
 up_direction = Vector2(0, 1)
 script = ExtResource("1_2u5xn")
 
-[node name="Sprite2D" type="Sprite2D" parent="Node2D/PianoMan"]
+[node name="Sprite2D" type="Sprite2D" parent="PlayerManager/PianoMan"]
 texture = ExtResource("3_7xw1p")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Node2D/PianoMan"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerManager/PianoMan"]
 shape = SubResource("CapsuleShape2D_4a3wb")
 
-[node name="DrummerBoy" type="CharacterBody2D" parent="Node2D" groups=["Players"]]
+[node name="DrummerBoy" type="CharacterBody2D" parent="PlayerManager" groups=["Players"]]
 position = Vector2(-43.725, 11.965)
 script = ExtResource("1_2u5xn")
 
-[node name="Sprite2D" type="Sprite2D" parent="Node2D/DrummerBoy"]
+[node name="Sprite2D" type="Sprite2D" parent="PlayerManager/DrummerBoy"]
 texture = ExtResource("5_5p0py")
 
-[node name="DrummerBoyAction" type="Node2D" parent="Node2D/DrummerBoy"]
+[node name="DrummerBoyAction" type="Node2D" parent="PlayerManager/DrummerBoy"]
 position = Vector2(0, -2)
 script = ExtResource("7_4cl2t")
 
-[node name="DrummerRift" type="AnimatedSprite2D" parent="Node2D/DrummerBoy/DrummerBoyAction"]
+[node name="DrummerRift" type="AnimatedSprite2D" parent="PlayerManager/DrummerBoy/DrummerBoyAction"]
 position = Vector2(66.725, 25.035)
 sprite_frames = SubResource("SpriteFrames_j64d3")
 animation = &"Wind Up"
 autoplay = "Wind Up"
 
-[node name="NoteExplosionQuarter" type="Sprite2D" parent="Node2D/DrummerBoy/DrummerBoyAction/DrummerRift"]
+[node name="NoteExplosionQuarter" type="Sprite2D" parent="PlayerManager/DrummerBoy/DrummerBoyAction/DrummerRift"]
 visible = false
 modulate = Color(0.136498, 0.619295, 1.92523e-07, 1)
 position = Vector2(-5, -8)
@@ -155,7 +155,7 @@ texture = ExtResource("9_tadvr")
 region_enabled = true
 region_rect = Rect2(32, 0, 16, 16)
 
-[node name="NoteExplosionHalf" type="Sprite2D" parent="Node2D/DrummerBoy/DrummerBoyAction/DrummerRift"]
+[node name="NoteExplosionHalf" type="Sprite2D" parent="PlayerManager/DrummerBoy/DrummerBoyAction/DrummerRift"]
 visible = false
 modulate = Color(0.639216, 0.231373, 0.501961, 1)
 position = Vector2(6, -8)
@@ -165,7 +165,7 @@ texture = ExtResource("9_tadvr")
 region_enabled = true
 region_rect = Rect2(48, 0, 16, 16)
 
-[node name="NoteExplosionSixteenth" type="Sprite2D" parent="Node2D/DrummerBoy/DrummerBoyAction/DrummerRift"]
+[node name="NoteExplosionSixteenth" type="Sprite2D" parent="PlayerManager/DrummerBoy/DrummerBoyAction/DrummerRift"]
 visible = false
 modulate = Color(0.223045, 0.4537, 0.471147, 1)
 position = Vector2(-1.19209e-06, -9)
@@ -175,15 +175,15 @@ texture = ExtResource("9_tadvr")
 region_enabled = true
 region_rect = Rect2(0, 0, 16, 16)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Node2D/DrummerBoy"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerManager/DrummerBoy"]
 shape = SubResource("CapsuleShape2D_4a3wb")
 
-[node name="GuitarHero" type="CharacterBody2D" parent="Node2D" groups=["Players"]]
+[node name="GuitarHero" type="CharacterBody2D" parent="PlayerManager" groups=["Players"]]
 position = Vector2(5.58, 11.85)
 script = ExtResource("1_2u5xn")
 
-[node name="Sprite2D" type="Sprite2D" parent="Node2D/GuitarHero"]
+[node name="Sprite2D" type="Sprite2D" parent="PlayerManager/GuitarHero"]
 texture = ExtResource("1_7c1yi")
 
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="Node2D/GuitarHero"]
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="PlayerManager/GuitarHero"]
 shape = SubResource("CapsuleShape2D_4a3wb")
