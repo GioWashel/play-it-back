@@ -1,8 +1,10 @@
+
 [gd_scene load_steps=12 format=4 uid="uid://b37plmw73hqye"]
 
+[ext_resource type="Script" uid="uid://b0dghxkhmymm2" path="res://scripts/CameraFollow.gd" id="1_2pvbs"]
 [ext_resource type="Script" uid="uid://dymaohpe45iuf" path="res://scripts/player_controller.gd" id="1_2u5xn"]
 [ext_resource type="Texture2D" uid="uid://ciy3u6ckwhakv" path="res://Assets/Charichters3.png" id="1_7c1yi"]
-[ext_resource type="Script" uid="uid://dnrttaaofdxgv" path="res://scripts/player_manager.gd" id="2_2pvbs"]
+[ext_resource type="Script" path="res://scripts/player_manager.gd" id="2_2pvbs"]
 [ext_resource type="Texture2D" uid="uid://bsfdmadt8ndfc" path="res://Assets/Charichters2.png" id="3_7xw1p"]
 [ext_resource type="Texture2D" uid="uid://bq37kjtv4adsc" path="res://Assets/Tileset.png" id="3_tf8oe"]
 [ext_resource type="Texture2D" uid="uid://dkpnew4o5bidj" path="res://Assets/Charichters1.png" id="5_5p0py"]
@@ -52,6 +54,7 @@ height = 40.0
 
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(4, 4)
+script = ExtResource("1_2pvbs")
 
 [node name="TilemapBase" type="TileMapLayer" parent="."]
 use_parent_material = true
@@ -60,6 +63,7 @@ tile_set = SubResource("TileSet_5p0py")
 
 [node name="Node2D" type="Node2D" parent="."]
 script = ExtResource("2_2pvbs")
+
 
 [node name="PianoMan" type="CharacterBody2D" parent="Node2D"]
 up_direction = Vector2(0, 1)
@@ -73,7 +77,19 @@ texture = ExtResource("3_7xw1p")
 position = Vector2(-27, 13)
 shape = SubResource("CapsuleShape2D_4cl2t")
 
-[node name="GuitarHero" type="CharacterBody2D" parent="Node2D"]
+[node name="DrummerBoy" type="CharacterBody2D" parent="Node2D" groups=["Players"]]
+position = Vector2(-70, 0)
+script = ExtResource("1_2u5xn")
+
+[node name="Sprite2D" type="Sprite2D" parent="Node2D/DrummerBoy"]
+texture = ExtResource("5_5p0py")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Node2D/DrummerBoy"]
+shape = SubResource("CapsuleShape2D_2u5xn")
+
+
+
+[node name="GuitarHero" type="CharacterBody2D" parent="Node2D" groups=["Players"]]
 script = ExtResource("1_2u5xn")
 
 [node name="Sprite2D" type="Sprite2D" parent="Node2D/GuitarHero"]
@@ -83,6 +99,7 @@ texture = ExtResource("1_7c1yi")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Node2D/GuitarHero"]
 position = Vector2(7, 13)
 scale = Vector2(0.75, 0.75)
+
 shape = SubResource("CapsuleShape2D_2u5xn")
 
 [node name="DrummerBoy" type="CharacterBody2D" parent="Node2D"]
