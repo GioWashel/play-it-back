@@ -1,0 +1,31 @@
+[gd_scene load_steps=5 format=3 uid="uid://b37plmw73hqye"]
+
+[ext_resource type="Script" uid="uid://dymaohpe45iuf" path="res://scripts/player_controller.gd" id="1_2u5xn"]
+[ext_resource type="Texture2D" uid="uid://ciy3u6ckwhakv" path="res://Assets/Charichters3.png" id="1_7c1yi"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_2u5xn"]
+radius = 6.0
+height = 32.0
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_tf8oe"]
+
+[node name="play-it-back" type="Node2D"]
+
+[node name="GuitarHero" type="CharacterBody2D" parent="."]
+script = ExtResource("1_2u5xn")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="GuitarHero"]
+position = Vector2(-1, 1)
+shape = SubResource("CapsuleShape2D_2u5xn")
+
+[node name="Sprite2D" type="Sprite2D" parent="GuitarHero"]
+texture = ExtResource("1_7c1yi")
+
+[node name="Floor" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Floor"]
+position = Vector2(0, 27)
+shape = SubResource("WorldBoundaryShape2D_tf8oe")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(4, 4)
