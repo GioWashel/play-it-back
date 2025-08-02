@@ -1,5 +1,6 @@
-[gd_scene load_steps=10 format=3 uid="uid://clfhtararoba3"]
+[gd_scene load_steps=12 format=3 uid="uid://clfhtararoba3"]
 
+[ext_resource type="Script" uid="uid://d0ux0ljrrvoap" path="res://scripts/drummer_rift.gd" id="1_hcab6"]
 [ext_resource type="Texture2D" uid="uid://h31rixsdw7pr" path="res://Assets/DrummerRift.png" id="1_iojdi"]
 [ext_resource type="Texture2D" uid="uid://cxx24mowto8l0" path="res://Assets/MusicNotes.png" id="2_hcab6"]
 
@@ -41,7 +42,7 @@ animations = [{
 }],
 "loop": false,
 "name": &"Wind Down",
-"speed": 5.0
+"speed": 15.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -55,16 +56,28 @@ animations = [{
 }],
 "loop": false,
 "name": &"Wind Up",
-"speed": 5.0
+"speed": 8.0
 }]
 
-[node name="DrummerRift" type="AnimatedSprite2D"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_hcab6"]
+radius = 8.0
+
+[node name="Rift" type="Area2D"]
+script = ExtResource("1_hcab6")
+rift_speed = 64.0
+jump_strength = 149.445
+
+[node name="Sprite" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, 3)
 sprite_frames = SubResource("SpriteFrames_j64d3")
 animation = &"Wind Up"
 autoplay = "Wind Up"
 
-[node name="NoteExplosionQuarter" type="Sprite2D" parent="."]
+[node name="Notes" type="Node2D" parent="."]
 visible = false
+position = Vector2(0, 3)
+
+[node name="NoteExplosionQuarter" type="Sprite2D" parent="Notes"]
 modulate = Color(0.136498, 0.619295, 1.92523e-07, 1)
 position = Vector2(-5, -8)
 rotation = -0.120428
@@ -73,8 +86,7 @@ texture = ExtResource("2_hcab6")
 region_enabled = true
 region_rect = Rect2(32, 0, 16, 16)
 
-[node name="NoteExplosionHalf" type="Sprite2D" parent="."]
-visible = false
+[node name="NoteExplosionHalf" type="Sprite2D" parent="Notes"]
 modulate = Color(0.639216, 0.231373, 0.501961, 1)
 position = Vector2(6, -8)
 rotation = 0.23911
@@ -83,8 +95,7 @@ texture = ExtResource("2_hcab6")
 region_enabled = true
 region_rect = Rect2(48, 0, 16, 16)
 
-[node name="NoteExplosionSixteenth" type="Sprite2D" parent="."]
-visible = false
+[node name="NoteExplosionSixteenth" type="Sprite2D" parent="Notes"]
 modulate = Color(0.223045, 0.4537, 0.471147, 1)
 position = Vector2(-1.19209e-06, -9)
 rotation = -0.0314159
@@ -92,3 +103,15 @@ scale = Vector2(0.5, 0.5)
 texture = ExtResource("2_hcab6")
 region_enabled = true
 region_rect = Rect2(0, 0, 16, 16)
+
+[node name="Expire" type="Timer" parent="."]
+wait_time = 0.75
+one_shot = true
+autostart = true
+
+[node name="Hitbox" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_hcab6")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="animation_finished" from="Sprite" to="." method="_on_sprite_animation_finished"]
+[connection signal="timeout" from="Expire" to="." method="begin_end"]

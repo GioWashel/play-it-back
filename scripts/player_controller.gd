@@ -13,7 +13,7 @@ const AIR_RESISTANCE = 0.8
 
 func _physics_process(delta: float) -> void:
 	# Add the gravity.
-	if not is_on_floor():
+	if not on_floor():
 		velocity += get_gravity() * delta
 	# player selected	
 	# Get the input direction and handle the movement/deceleration.
@@ -26,7 +26,14 @@ func _physics_process(delta: float) -> void:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 	var previous_velocity = velocity; 
 	move_and_slide();
-		
+	
+func on_floor() -> bool:
+	var space_state = get_world_2d().direct_space_state
+	var query = PhysicsRayQueryParameters2D.create(global_position, global_position + Vector2.DOWN * 16)
+	query.exclude = [self]
+	var res = space_state.intersect_ray(query)
+	
+	return not res.is_empty()
 
 func pass_input(_dir: float, _primary: bool, _secondary: bool):
 	curr_dir = _dir
@@ -40,7 +47,11 @@ func pass_input(_dir: float, _primary: bool, _secondary: bool):
 	secondary = _secondary
 
 func on_primary_action():
+	if action_node == null:
+		return
 	action_node.primary_action()
 
 func on_secondary_action():
+	if action_node == null:
+		return
 	action_node.secondary_action()
