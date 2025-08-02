@@ -8,7 +8,9 @@ var secondary: bool
 const SPEED = 100
 const JUMP_VELOCITY = -400.0
 const AIR_RESISTANCE = 0.8
-			
+
+@export var action_node : Node2D
+
 func _physics_process(delta: float) -> void:
 	# Add the gravity.
 	if not is_on_floor():
@@ -28,5 +30,17 @@ func _physics_process(delta: float) -> void:
 
 func pass_input(_dir: float, _primary: bool, _secondary: bool):
 	curr_dir = _dir
+	
+	if (_primary and _primary != primary):
+		on_primary_action()
 	primary = _primary
+	if (_secondary and _secondary != secondary):
+		on_primary_action()
+	#Maybe add primary/secondary end?
 	secondary = _secondary
+
+func on_primary_action():
+	action_node.primary_action()
+
+func on_secondary_action():
+	action_node.secondary_action()

@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=4 uid="uid://b37plmw73hqye"]
+[gd_scene load_steps=12 format=4 uid="uid://b37plmw73hqye"]
 
 [ext_resource type="Script" uid="uid://b0dghxkhmymm2" path="res://scripts/CameraFollow.gd" id="1_2pvbs"]
 [ext_resource type="Script" uid="uid://dymaohpe45iuf" path="res://scripts/player_controller.gd" id="1_2u5xn"]
@@ -8,8 +8,6 @@
 [ext_resource type="Texture2D" uid="uid://bq37kjtv4adsc" path="res://Assets/Tileset.png" id="3_tf8oe"]
 [ext_resource type="Texture2D" uid="uid://dkpnew4o5bidj" path="res://Assets/Charichters1.png" id="5_5p0py"]
 [ext_resource type="Script" uid="uid://c76oyvn14trs3" path="res://scripts/drummer_boy_action.gd" id="7_4cl2t"]
-[ext_resource type="Texture2D" uid="uid://h31rixsdw7pr" path="res://Assets/DrummerRift.png" id="8_nehl0"]
-[ext_resource type="Texture2D" uid="uid://cxx24mowto8l0" path="res://Assets/MusicNotes.png" id="9_tadvr"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_2pvbs"]
 texture = ExtResource("3_tf8oe")
@@ -48,61 +46,6 @@ sources/1 = SubResource("TileSetAtlasSource_2pvbs")
 radius = 4.82
 height = 31.58
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_tadvr"]
-atlas = ExtResource("8_nehl0")
-region = Rect2(0, 0, 16, 16)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_ru5at"]
-atlas = ExtResource("8_nehl0")
-region = Rect2(16, 0, 16, 16)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_nlosj"]
-atlas = ExtResource("8_nehl0")
-region = Rect2(32, 0, 16, 16)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_n0ywk"]
-atlas = ExtResource("8_nehl0")
-region = Rect2(32, 0, 16, 16)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_844pp"]
-atlas = ExtResource("8_nehl0")
-region = Rect2(16, 0, 16, 16)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_yyn8k"]
-atlas = ExtResource("8_nehl0")
-region = Rect2(0, 0, 16, 16)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_j64d3"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_tadvr")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_ru5at")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_nlosj")
-}],
-"loop": false,
-"name": &"Wind Down",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_n0ywk")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_844pp")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_yyn8k")
-}],
-"loop": false,
-"name": &"Wind Up",
-"speed": 5.0
-}]
-
 [node name="play-it-back" type="Node2D"]
 
 [node name="Camera2D" type="Camera2D" parent="."]
@@ -128,9 +71,10 @@ texture = ExtResource("3_7xw1p")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerManager/PianoMan"]
 shape = SubResource("CapsuleShape2D_4a3wb")
 
-[node name="DrummerBoy" type="CharacterBody2D" parent="PlayerManager" groups=["Players"]]
+[node name="DrummerBoy" type="CharacterBody2D" parent="PlayerManager" node_paths=PackedStringArray("action_node") groups=["Players"]]
 position = Vector2(-43.725, 11.965)
 script = ExtResource("1_2u5xn")
+action_node = NodePath("DrummerBoyAction")
 
 [node name="Sprite2D" type="Sprite2D" parent="PlayerManager/DrummerBoy"]
 texture = ExtResource("5_5p0py")
@@ -138,42 +82,6 @@ texture = ExtResource("5_5p0py")
 [node name="DrummerBoyAction" type="Node2D" parent="PlayerManager/DrummerBoy"]
 position = Vector2(0, -2)
 script = ExtResource("7_4cl2t")
-
-[node name="DrummerRift" type="AnimatedSprite2D" parent="PlayerManager/DrummerBoy/DrummerBoyAction"]
-position = Vector2(66.725, 25.035)
-sprite_frames = SubResource("SpriteFrames_j64d3")
-animation = &"Wind Up"
-autoplay = "Wind Up"
-
-[node name="NoteExplosionQuarter" type="Sprite2D" parent="PlayerManager/DrummerBoy/DrummerBoyAction/DrummerRift"]
-visible = false
-modulate = Color(0.136498, 0.619295, 1.92523e-07, 1)
-position = Vector2(-5, -8)
-rotation = -0.120428
-scale = Vector2(0.5, 0.5)
-texture = ExtResource("9_tadvr")
-region_enabled = true
-region_rect = Rect2(32, 0, 16, 16)
-
-[node name="NoteExplosionHalf" type="Sprite2D" parent="PlayerManager/DrummerBoy/DrummerBoyAction/DrummerRift"]
-visible = false
-modulate = Color(0.639216, 0.231373, 0.501961, 1)
-position = Vector2(6, -8)
-rotation = 0.23911
-scale = Vector2(0.5, 0.5)
-texture = ExtResource("9_tadvr")
-region_enabled = true
-region_rect = Rect2(48, 0, 16, 16)
-
-[node name="NoteExplosionSixteenth" type="Sprite2D" parent="PlayerManager/DrummerBoy/DrummerBoyAction/DrummerRift"]
-visible = false
-modulate = Color(0.223045, 0.4537, 0.471147, 1)
-position = Vector2(-1.19209e-06, -9)
-rotation = -0.0314159
-scale = Vector2(0.5, 0.5)
-texture = ExtResource("9_tadvr")
-region_enabled = true
-region_rect = Rect2(0, 0, 16, 16)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerManager/DrummerBoy"]
 shape = SubResource("CapsuleShape2D_4a3wb")

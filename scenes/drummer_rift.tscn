@@ -1,0 +1,94 @@
+[gd_scene load_steps=10 format=3 uid="uid://clfhtararoba3"]
+
+[ext_resource type="Texture2D" uid="uid://h31rixsdw7pr" path="res://Assets/DrummerRift.png" id="1_iojdi"]
+[ext_resource type="Texture2D" uid="uid://cxx24mowto8l0" path="res://Assets/MusicNotes.png" id="2_hcab6"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tadvr"]
+atlas = ExtResource("1_iojdi")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ru5at"]
+atlas = ExtResource("1_iojdi")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nlosj"]
+atlas = ExtResource("1_iojdi")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_n0ywk"]
+atlas = ExtResource("1_iojdi")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_844pp"]
+atlas = ExtResource("1_iojdi")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yyn8k"]
+atlas = ExtResource("1_iojdi")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_j64d3"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tadvr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ru5at")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nlosj")
+}],
+"loop": false,
+"name": &"Wind Down",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_n0ywk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_844pp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yyn8k")
+}],
+"loop": false,
+"name": &"Wind Up",
+"speed": 5.0
+}]
+
+[node name="DrummerRift" type="AnimatedSprite2D"]
+sprite_frames = SubResource("SpriteFrames_j64d3")
+animation = &"Wind Up"
+autoplay = "Wind Up"
+
+[node name="NoteExplosionQuarter" type="Sprite2D" parent="."]
+visible = false
+modulate = Color(0.136498, 0.619295, 1.92523e-07, 1)
+position = Vector2(-5, -8)
+rotation = -0.120428
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_hcab6")
+region_enabled = true
+region_rect = Rect2(32, 0, 16, 16)
+
+[node name="NoteExplosionHalf" type="Sprite2D" parent="."]
+visible = false
+modulate = Color(0.639216, 0.231373, 0.501961, 1)
+position = Vector2(6, -8)
+rotation = 0.23911
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_hcab6")
+region_enabled = true
+region_rect = Rect2(48, 0, 16, 16)
+
+[node name="NoteExplosionSixteenth" type="Sprite2D" parent="."]
+visible = false
+modulate = Color(0.223045, 0.4537, 0.471147, 1)
+position = Vector2(-1.19209e-06, -9)
+rotation = -0.0314159
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_hcab6")
+region_enabled = true
+region_rect = Rect2(0, 0, 16, 16)
