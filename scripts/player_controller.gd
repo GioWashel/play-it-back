@@ -42,7 +42,7 @@ func pass_input(_dir: float, _primary: bool, _secondary: bool):
 		on_primary_action()
 	primary = _primary
 	if (_secondary and _secondary != secondary):
-		on_primary_action()
+		on_secondary_action()
 	#Maybe add primary/secondary end?
 	secondary = _secondary
 

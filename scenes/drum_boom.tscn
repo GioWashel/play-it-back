@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://b2j580cdu07i8"]
+
+[ext_resource type="Script" uid="uid://bhxknaydp4nv5" path="res://scripts/drum_boom.gd" id="1_is0jw"]
+
+[sub_resource type="Curve" id="Curve_is0jw"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.223404, 1), 0.459208, 0.459208, 0, 0, Vector2(1, 0), -2.49642, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_is0jw"]
+radius = 48.0
+
+[node name="Boom" type="Area2D"]
+script = ExtResource("1_is0jw")
+boom_force = 999
+rays = 24
+curve = SubResource("Curve_is0jw")
+length = 0.25
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_is0jw")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

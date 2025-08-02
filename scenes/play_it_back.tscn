@@ -39,7 +39,8 @@ texture = ExtResource("3_tf8oe")
 1:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 
 [sub_resource type="TileSet" id="TileSet_5p0py"]
-physics_layer_0/collision_layer = 1
+physics_layer_0/collision_layer = 129
+physics_layer_0/collision_mask = 129
 sources/1 = SubResource("TileSetAtlasSource_2pvbs")
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_4a3wb"]
@@ -60,7 +61,7 @@ tile_set = SubResource("TileSet_5p0py")
 [node name="PlayerManager" type="Node2D" parent="."]
 script = ExtResource("2_2pvbs")
 
-[node name="PianoMan" type="CharacterBody2D" parent="PlayerManager" groups=["Players"]]
+[node name="PianoMan" type="CharacterBody2D" parent="PlayerManager" groups=["Players", "pianoMan"]]
 position = Vector2(-19.82, 12.21)
 up_direction = Vector2(0, 1)
 script = ExtResource("1_2u5xn")
@@ -71,7 +72,7 @@ texture = ExtResource("3_7xw1p")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerManager/PianoMan"]
 shape = SubResource("CapsuleShape2D_4a3wb")
 
-[node name="DrummerBoy" type="CharacterBody2D" parent="PlayerManager" node_paths=PackedStringArray("action_node") groups=["Players"]]
+[node name="DrummerBoy" type="CharacterBody2D" parent="PlayerManager" node_paths=PackedStringArray("action_node") groups=["Players", "drummerBoy"]]
 position = Vector2(-43.725, 11.965)
 script = ExtResource("1_2u5xn")
 action_node = NodePath("DrummerBoyAction")
@@ -91,7 +92,7 @@ one_shot = true
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerManager/DrummerBoy"]
 shape = SubResource("CapsuleShape2D_4a3wb")
 
-[node name="GuitarHero" type="CharacterBody2D" parent="PlayerManager" groups=["Players"]]
+[node name="GuitarHero" type="CharacterBody2D" parent="PlayerManager" groups=["Players", "guitarHero"]]
 position = Vector2(5.58, 11.85)
 script = ExtResource("1_2u5xn")
 
