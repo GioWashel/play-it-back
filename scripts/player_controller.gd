@@ -23,7 +23,6 @@ func _physics_process(delta: float) -> void:
 	move_and_slide();
 	for i in range(get_slide_collision_count()):
 		var collision = get_slide_collision(i)
-		print("I collided with ", collision.get_collider().name)
 		_handle_collision(collision, previous_velocity)
 		
 func _handle_collision(collision: KinematicCollision2D, old_velocity: Vector2):
