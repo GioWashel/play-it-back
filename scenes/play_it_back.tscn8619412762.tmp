@@ -1,10 +1,8 @@
+[gd_scene load_steps=11 format=4 uid="uid://b37plmw73hqye"]
 
-[gd_scene load_steps=12 format=4 uid="uid://b37plmw73hqye"]
-
-[ext_resource type="Script" uid="uid://b0dghxkhmymm2" path="res://scripts/CameraFollow.gd" id="1_2pvbs"]
 [ext_resource type="Script" uid="uid://dymaohpe45iuf" path="res://scripts/player_controller.gd" id="1_2u5xn"]
 [ext_resource type="Texture2D" uid="uid://ciy3u6ckwhakv" path="res://Assets/Charichters3.png" id="1_7c1yi"]
-[ext_resource type="Script" path="res://scripts/player_manager.gd" id="2_2pvbs"]
+[ext_resource type="Script" uid="uid://dnrttaaofdxgv" path="res://scripts/player_manager.gd" id="2_2pvbs"]
 [ext_resource type="Texture2D" uid="uid://bsfdmadt8ndfc" path="res://Assets/Charichters2.png" id="3_7xw1p"]
 [ext_resource type="Texture2D" uid="uid://bq37kjtv4adsc" path="res://Assets/Tileset.png" id="3_tf8oe"]
 [ext_resource type="Texture2D" uid="uid://dkpnew4o5bidj" path="res://Assets/Charichters1.png" id="5_5p0py"]
@@ -43,18 +41,14 @@ texture = ExtResource("3_tf8oe")
 physics_layer_0/collision_layer = 1
 sources/1 = SubResource("TileSetAtlasSource_2pvbs")
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_4cl2t"]
-radius = 4.0
-
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_2u5xn"]
 radius = 6.0
-height = 40.0
+height = 32.0
 
 [node name="play-it-back" type="Node2D"]
 
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(4, 4)
-script = ExtResource("1_2pvbs")
 
 [node name="TilemapBase" type="TileMapLayer" parent="."]
 use_parent_material = true
@@ -64,54 +58,39 @@ tile_set = SubResource("TileSet_5p0py")
 [node name="Node2D" type="Node2D" parent="."]
 script = ExtResource("2_2pvbs")
 
-
 [node name="PianoMan" type="CharacterBody2D" parent="Node2D"]
-up_direction = Vector2(0, 1)
 script = ExtResource("1_2u5xn")
 
 [node name="Sprite2D" type="Sprite2D" parent="Node2D/PianoMan"]
-position = Vector2(-26, 12)
+position = Vector2(-26, -9)
 texture = ExtResource("3_7xw1p")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Node2D/PianoMan"]
-position = Vector2(-27, 13)
-shape = SubResource("CapsuleShape2D_4cl2t")
-
-[node name="DrummerBoy" type="CharacterBody2D" parent="Node2D" groups=["Players"]]
-position = Vector2(-70, 0)
-script = ExtResource("1_2u5xn")
-
-[node name="Sprite2D" type="Sprite2D" parent="Node2D/DrummerBoy"]
-texture = ExtResource("5_5p0py")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Node2D/DrummerBoy"]
+position = Vector2(-26, -8)
+scale = Vector2(0.75, 0.75)
 shape = SubResource("CapsuleShape2D_2u5xn")
 
-
-
-[node name="GuitarHero" type="CharacterBody2D" parent="Node2D" groups=["Players"]]
+[node name="GuitarHero" type="CharacterBody2D" parent="Node2D"]
 script = ExtResource("1_2u5xn")
-
-[node name="Sprite2D" type="Sprite2D" parent="Node2D/GuitarHero"]
-position = Vector2(8, 12)
-texture = ExtResource("1_7c1yi")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Node2D/GuitarHero"]
-position = Vector2(7, 13)
+position = Vector2(-1, 1)
 scale = Vector2(0.75, 0.75)
-
 shape = SubResource("CapsuleShape2D_2u5xn")
+
+[node name="Sprite2D" type="Sprite2D" parent="Node2D/GuitarHero"]
+texture = ExtResource("1_7c1yi")
 
 [node name="DrummerBoy" type="CharacterBody2D" parent="Node2D"]
 position = Vector2(0, 2)
 script = ExtResource("1_2u5xn")
 
 [node name="Sprite2D" type="Sprite2D" parent="Node2D/DrummerBoy"]
-position = Vector2(-48, 10)
+position = Vector2(-48, 0)
 texture = ExtResource("5_5p0py")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Node2D/DrummerBoy"]
-position = Vector2(-49, 11)
+position = Vector2(-48, 1)
 scale = Vector2(0.75, 0.75)
 shape = SubResource("CapsuleShape2D_2u5xn")
 

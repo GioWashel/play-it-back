@@ -28,6 +28,7 @@ func _process(delta: float) -> void:
 		switch_character(PIANO_MAN_INDEX)
 	elif Input.is_action_just_pressed("ui_select_3"):
 		switch_character(DRUMER_BOY_INDEX)
+		
 	
 	
 func switch_character(index: int) -> void:
